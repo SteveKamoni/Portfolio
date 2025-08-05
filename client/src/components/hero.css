@@ -1,0 +1,200 @@
+/* src/components/Hero/Hero.css */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, black, #111);
+  opacity: 0.9;
+}
+
+.hero-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-badge {
+  margin-bottom: 1.5rem;
+}
+
+.badge-text {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: rgba(55, 65, 81, 0.5);
+  color: #00ff9d;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  max-width: 48rem;
+  margin: 0 auto 2.5rem;
+  line-height: 1.5;
+}
+
+.highlight {
+  color: #00ff9d;
+  font-weight: 500;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primary-button {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, #00ff9d, #00b8ff);
+  color: black;
+  font-weight: 700;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.secondary-button {
+  padding: 0.75rem 2rem;
+  border: 1px solid #00ff9d;
+  color: #00ff9d;
+  font-weight: 700;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.secondary-button:hover {
+  background-color: rgba(0, 255, 157, 0.1);
+  transform: scale(1.05);
+}
+
+.hero-scroll {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-circle {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  background-color: rgba(55, 65, 81, 0.5);
+  border: 1px solid #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-link {
+  color: #9ca3af;
+}
+
+.scroll-link:hover {
+  color: white;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--primary);
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #00ff9d;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}

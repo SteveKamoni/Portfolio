@@ -1,0 +1,148 @@
+/* src/components/About/About.css */
+.about-section {
+  padding: 5rem 1rem;
+  background-color: #111;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-divider {
+  width: 5rem;
+  height: 0.125rem;
+  background: linear-gradient(to right, #00ff9d, #00b8ff);
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-paragraph {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  line-height: 1.75;
+}
+
+.highlight {
+  color: #00ff9d;
+  font-weight: 500;
+}
+
+.skills-section {
+  padding-top: 1rem;
+}
+
+.skills-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-pill {
+  padding: 0.5rem 1rem;
+  background-color: rgba(55, 65, 81, 0.5);
+  border-radius: 9999px;
+  color: #00ff9d;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875rem;
+  border: 1px solid #374151;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-pill:hover {
+  background: linear-gradient(90deg, #111, #00ff9d);
+  color: #111;
+  font-weight: 700;
+}
+
+.terminal-container {
+  position: relative;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 2px;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg, #00ff9d, #00b8ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.terminal {
+  background-color: #111;
+  padding: 1.5rem;
+  border-radius: 0.375rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.terminal-line {
+  color: #00ff9d;
+  margin-bottom: 0.5rem;
+}
+
+.terminal-line::before {
+  content: "> ";
+}
+
+.terminal-response {
+  color: #d1d5db;
+  margin-bottom: 0.5rem;
+}
+
+.terminal-response::before {
+  content: "> ";
+}
+
+.blinking-cursor {
+  color: #00ff9d;
+  font-family: "JetBrains Mono", monospace;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
