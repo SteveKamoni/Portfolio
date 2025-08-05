@@ -3,7 +3,10 @@ import './App.css'
 import Navbar from './components/navbar'
 import Hero from './components/hero'
 import About from './components/about'
-import Projects from './components/projects'  
+import Projects from './components/projects'
+import TechStack from './components/techstack'  
+import Contact from './components/contact'
+import Footer from './components/footer'
 function App() {
 
   return (
@@ -12,6 +15,9 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <TechStack />
+        <Contact />
+        <Footer />
       </div>
 
   )
