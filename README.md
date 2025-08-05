@@ -28,25 +28,6 @@ It showcases my skills, projects, certifications, and includes a contact form wi
 
 ```
 
-web-portfolio/
-├── client/                   # Frontend (React + Vite)
-│   ├── public/
-│   └── src/
-│       ├── assets/           # Images, icons
-│       ├── components/       # Reusable UI sections
-│       ├── pages/            # Main page sections (Hero, Projects, etc.)
-│       ├── App.jsx
-│       └── main.jsx
-├── server/                   # Backend (Node + Express)
-│   ├── routes/               # API routes (e.g., contact form)
-│   ├── controllers/          # Route logic
-│   └── index.js              # Main entry point
-└── README.md                 # This file
-
-````
-
----
-
 ## 🚀 Features
 
 - 💼 Projects section with GitHub/demo links
@@ -140,14 +121,4 @@ Full-stack developer focused on React + Node
 
 This project is licensed under the MIT License.
 
-```
-
----
-
-Let me know if:
-- You want me to generate this as a `.md` file for download.
-- You want to add specific project links, deployment URLs, or GitHub stats.
-- You want this README also rendered as the homepage for your portfolio (can be done with markdown-to-HTML render).
-
-Ready to move to backend scaffolding or build out components?
 ```
