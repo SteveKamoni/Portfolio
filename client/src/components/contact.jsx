@@ -1,8 +1,50 @@
 // src/components/Contact/Contact.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import './contact.css';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({ 
+      ...formData, 
+      [e.target.name]: e.target.value 
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch('http://localhost:5000/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus(data.error || 'fail');
+      }
+
+    } catch (err) {
+      console.error(err);
+      setStatus('fail');
+    }
+  };
+
   return (
     <section id="contact" className="contact-section">
       <div className="contact-container">
@@ -16,27 +58,36 @@ const Contact = () => {
           </p>
         </div>
 
-        <form className="contact-form">
+        <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input 
               type="text" 
+              name="name"
               placeholder="Your Name" 
               className="form-input" 
+              value={formData.name}
+              onChange={handleChange}
               required 
             />
           </div>
           <div className="form-group">
             <input 
               type="email" 
+              name="email"
               placeholder="Your Email" 
               className="form-input" 
+              value={formData.email}
+              onChange={handleChange}
               required 
             />
           </div>
           <div className="form-group">
             <textarea 
+              name="message"
               placeholder="Your Message" 
               className="form-input form-textarea" 
+              value={formData.message}
+              onChange={handleChange}
               required
             ></textarea>
           </div>
@@ -44,6 +95,9 @@ const Contact = () => {
             Send Message
           </button>
         </form>
+
+        {status === 'success' && <p className="success-msg">Message sent successfully!</p>}
+        {status === 'fail' && <p className="error-msg">Failed to send message. Try again.</p>}
       </div>
     </section>
   );
