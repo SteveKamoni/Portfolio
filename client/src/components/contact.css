@@ -1,3 +1,16 @@
+/* Success message styling */
+.success-msg {
+  background: linear-gradient(90deg, #00ff9d 0%, #00b8ff 100%);
+  color: #111;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  margin: 2rem auto 0 auto;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 2px 12px 0 rgba(0, 255, 157, 0.08);
+  letter-spacing: 0.5px;
+}
 /* src/components/Contact/Contact.css */
 .contact-section {
   padding: 5rem 1rem;

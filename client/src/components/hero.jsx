@@ -11,9 +11,9 @@ const Hero = () => {
         <div className="hero-badge">
           <span className="badge-text mono">SYSTEM_DEV v2.0.0</span>
         </div>
-        <h1 className="hero-title">
-          <span className="gradient-text">System-focused</span><br />
-          <span className="typewriter">Full-Stack Developer</span>
+        <h1 className="hero-title fade-in-up">
+          <span className="gradient-text fade-in-up" style={{ animationDelay: '0.2s' }}>System-focused</span><br />
+          <span className="typewriter fade-in-up" style={{ animationDelay: '0.5s' }}>Full-Stack Developer</span>
         </h1>
         <p className="hero-subtitle">
           I don't just build websites—I architect <span className="highlight">systems</span>.

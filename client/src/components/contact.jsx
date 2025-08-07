@@ -10,6 +10,14 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState(null);
+  React.useEffect(() => {
+    if (status === 'success') {
+      const timer = setTimeout(() => {
+        setStatus(null);
+      }, 3000); // Hide after 3 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleChange = (e) => {
     setFormData({ 
@@ -96,7 +104,9 @@ const Contact = () => {
           </button>
         </form>
 
-        {status === 'success' && <p className="success-msg">Message sent successfully!</p>}
+        {status === 'success' && (
+          <p className="success-msg">Message sent successfully!</p>
+        )}
         {status === 'fail' && <p className="error-msg">Failed to send message. Try again.</p>}
       </div>
     </section>
