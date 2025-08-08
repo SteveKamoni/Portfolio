@@ -3,18 +3,17 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
-
+app.use(express.json());
 app.use(
   cors({
-    origin: "https://stevebuilds.vercel.app",
+    origin: "https://<your-vercel-site>.vercel.app", // <-- I will replace this exact domain later
     methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
   })
 );
-app.use(bodyParser.json());
 
 // API routes
 const formRoutes = require("./routes/formRoutes");
