@@ -8,7 +8,10 @@ const path = require("path");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://stevebuilds.vercel.app",
+  methods: ["GET", "POST"],
+}));
 app.use(bodyParser.json());
 
 // API routes
