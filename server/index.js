@@ -1,5 +1,3 @@
-// server/index.js or in a separate route/controller
-
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
