@@ -1,0 +1,64 @@
+// ----------------------
+// Fonts & Typography
+// ----------------------
+$font-primary: "Inter", sans-serif;
+$font-mono: "JetBrains Mono", monospace;
+
+// Font sizes (mobile-first, scale up with breakpoints)
+$font-size-xs: 0.75rem;   // ~12px
+$font-size-sm: 0.875rem;  // ~14px
+$font-size-base: 1rem;    // 16px (body)
+$font-size-lg: 1.125rem;  // ~18px
+$font-size-xl: 1.25rem;   // ~20px
+$font-size-2xl: 1.5rem;   // ~24px
+$font-size-3xl: 2rem;     // ~32px (section titles)
+$font-size-4xl: 3rem;     // ~48px (hero headlines)
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Line height & spacing
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+$letter-spacing-tight: -0.01em;
+$letter-spacing-wide: 0.05em;
+
+// ----------------------
+// Colors
+// ----------------------
+$color-primary: #00ff9d;
+$color-secondary: #00b8ff;
+$color-dark: #0a0a0a;
+$color-light: #f8f8f8;
+$color-black: #000;
+$color-white: #fff;
+
+// ----------------------
+// Breakpoints
+// ----------------------
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ----------------------
+// Body Reset
+// ----------------------
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-base;
+  background-color: $color-dark;
+  color: $color-light;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

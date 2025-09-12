@@ -1,6 +1,6 @@
 // src/components/TechStack/TechStack.jsx
 import React from 'react';
-import './techstack.css'; // Assuming you have a CSS file for styling
+// import './techstack.css'; // Assuming you have a CSS file for styling
 
 const TechStack = () => {
   return (

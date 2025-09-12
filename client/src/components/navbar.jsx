@@ -1,43 +1,64 @@
-import React, { useState } from 'react';
-import './nav.css';
+import React, { useState } from "react";
+import styles from "../styles/nav.module.scss";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <div className="navbar-logo">
-          <span className="logo-text">SYSTEM_DEV</span>
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        {/* Logo */}
+        <div className={styles.logo}>
+          <span className={styles.logoText}>SYSTEM_DEV</span>
         </div>
 
-        <div className="navbar-links-desktop">
-          <a href="#hero" className="nav-link">Home</a>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#tech" className="nav-link">Tech</a>
-          <a href="#contact" className="nav-link">Contact</a>
-        </div>
+        {/* Desktop Nav */}
+        <ul className={styles.linksDesktop}>
+          <li><a href="#hero" className={styles.navLink}>Home</a></li>
+          <li><a href="#about" className={styles.navLink}>About</a></li>
+          <li><a href="#projects" className={styles.navLink}>Projects</a></li>
+          <li><a href="#tech" className={styles.navLink}>Tech</a></li>
+          <li><a href="#contact" className={styles.navLink}>Contact</a></li>
+        </ul>
 
-        <div className="menu-toggle">
+        {/* Mobile Toggle */}
+        <div className={styles.menuToggle}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="menu-button"
+            className={styles.menuButton}
+            aria-label="Toggle menu"
           >
-            <svg className="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className={styles.menuIcon}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>
       </div>
 
-      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <a href="#hero" className="mobile-link">Home</a>
-        <a href="#about" className="mobile-link">About</a>
-        <a href="#projects" className="mobile-link">Projects</a>
-        <a href="#tech" className="mobile-link">Tech</a>
-        <a href="#contact" className="mobile-link">Contact</a>
-      </div>
+      {/* Mobile Menu */}
+      <ul className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ""}`}>
+        <li><a href="#hero" className={styles.mobileLink} onClick={handleLinkClick}>Home</a></li>
+        <li><a href="#about" className={styles.mobileLink} onClick={handleLinkClick}>About</a></li>
+        <li><a href="#projects" className={styles.mobileLink} onClick={handleLinkClick}>Projects</a></li>
+        <li><a href="#tech" className={styles.mobileLink} onClick={handleLinkClick}>Tech</a></li>
+        <li><a href="#contact" className={styles.mobileLink} onClick={handleLinkClick}>Contact</a></li>
+      </ul>
     </nav>
   );
 };
