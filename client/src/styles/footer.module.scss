@@ -1,0 +1,110 @@
+// src/components/Footer/Footer.module.scss
+.footer {
+  background-color: $color-dark;
+  color: #ccc; // Specific gray shade
+  padding: 3rem 1rem;
+  font-family: $font-primary;
+
+  .footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footerBrand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footerLogo {
+    font-size: 1.75rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+
+    &.gradientText {
+      background: linear-gradient(to right, $color-primary, $color-secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.mono {
+      font-family: $font-mono;
+    }
+  }
+
+  .footerSubtitle {
+    font-size: $font-size-base;
+    opacity: 0.8;
+    max-width: 300px;
+  }
+
+  .footerNav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .footerNavLink {
+    color: #ccc; // Specific gray shade
+    text-decoration: none;
+    font-size: $font-size-base;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  .footerSocial {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .footerSocialLink {
+    color: #ccc; // Specific gray shade
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $color-white;
+      transform: translateY(-3px);
+    }
+  }
+
+  .footerCopyright {
+    text-align: center;
+    font-size: $font-size-sm;
+    opacity: 0.7;
+    margin-top: 3rem;
+  }
+
+  // Media queries
+  @media (min-width: $breakpoint-md) {
+    .footerContainer {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footerBrand {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footerNav {
+      justify-content: flex-end;
+    }
+
+    .footerSocial {
+      justify-content: flex-start;
+    }
+  }
+}

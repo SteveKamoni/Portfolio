@@ -1,36 +1,60 @@
-// src/components/Hero/Hero.jsx
-import React from 'react';
-// import './hero.css';
+import React from "react";
+import styles from "../styles/hero.module.scss";
+import { smoothScroll } from "../utils/smoothScroll";
+
 
 const Hero = () => {
+  const handleClick = (e, targetId) => {
+    e.preventDefault();
+    smoothScroll(targetId, 80); // 80px offset to account for fixed header if you have one
+  };
+
   return (
-    <section id="hero" className="hero-section">
-      <div className="hero-background"></div>
-      
-      <div className="hero-content">
-        <div className="hero-badge">
-          <span className="badge-text mono">SYSTEM_DEV v2.0.0</span>
+    <section id="hero" className={styles.heroSection}>
+      <div className={styles.heroBackground}></div>
+
+      <div className={styles.heroContent}>
+        <div className={styles.heroBadge}>
+          <span className={`${styles.badgeText} mono`}>SYSTEM_DEV v2.0.0</span>
         </div>
-        <h1 className="hero-title fade-in-up">
-          <span className="gradient-text fade-in-up" style={{ animationDelay: '0.2s' }}>System-focused</span><br />
-          <span className="typewriter fade-in-up" style={{ animationDelay: '0.5s' }}>Full-Stack Developer</span>
+
+        <h1 className={styles.heroTitle}>
+          <span
+            className={`${styles.gradientText} ${styles.fadeInUp}`}
+            style={{ animationDelay: "0.2s" }}
+          >
+            System-focused
+          </span>
+          <br />
+          <span
+            className={`${styles.typewriter} ${styles.fadeInUp}`}
+            style={{ animationDelay: "0.5s" }}
+          >
+            Full-Stack Developer
+          </span>
         </h1>
-        <p className="hero-subtitle">
-          I don't just build websites—I architect <span className="highlight">systems</span>.
+
+        <p className={styles.heroSubtitle}>
+          I don't just build websites—I architect{" "}
+          <span className={styles.highlight}>systems</span>.
         </p>
-        <div className="hero-buttons">
-          <a href="#projects" className="primary-button">
+
+        <div className={styles.heroButtons}>
+          <a href="#projects" className={styles.primaryButton}>
             Explore Projects
           </a>
-          <a href="#contact" className="secondary-button">
+          <a href="#contact" className={styles.secondaryButton}>
             Contact Me
           </a>
         </div>
-        
-        <div className="hero-scroll">
-          <div className="scroll-circle floating">
-            <a href="#about" className="scroll-link">
-              <i className="fas fa-chevron-down animate-bounce"></i>
+
+        <div className={styles.heroScroll}>
+          <div className={`${styles.scrollCircle} ${styles.floating}`}>
+            <a href="#about" className={styles.scrollLink} aria-label="Scroll to about"
+            onClick={(e)=> handleClick(e,'about')}
+            >
+              {/* keep FontAwesome classes, add module animation class */}
+              <i className={`fas fa-chevron-down ${styles.animateBounce}`} aria-hidden="true"></i>
             </a>
           </div>
         </div>

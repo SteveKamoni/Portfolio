@@ -7,7 +7,13 @@ import Projects from './components/projects'
 import TechStack from './components/techstack'  
 import Contact from './components/contact'
 import Footer from './components/footer'
+import { useEffect } from 'react'
+import { initSmoothScrolling } from './utils/smoothScroll'
+
 function App() {
+  useEffect(() => {
+    initSmoothScrolling();
+  }, []);
 
   return (
       <div>

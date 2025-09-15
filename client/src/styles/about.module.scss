@@ -1,0 +1,148 @@
+.aboutSection {
+  padding: 5rem 1rem;
+  background-color: $color-dark;
+}
+
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: 1rem;
+}
+
+.sectionDivider {
+  width: 5rem;
+  height: 0.125rem;
+  background: linear-gradient(to right, $color-primary, $color-secondary);
+  margin: 0 auto;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aboutParagraph {
+  font-size: $font-size-lg;
+  color: $color-light;
+  line-height: 1.75;
+}
+
+.highlight {
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+/* Skills */
+.skillsSection {
+  padding-top: 1rem;
+}
+
+.skillsTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-light;
+  margin-bottom: 1rem;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skillPill {
+  padding: 0.5rem 1rem;
+  background-color: rgba(55, 65, 81, 0.5);
+  border-radius: 9999px;
+  color: $color-primary;
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  border: 1px solid #374151;
+  transition: all 0.3s ease;
+  cursor: default;
+
+  &:hover {
+    background: linear-gradient(90deg, $color-dark, $color-primary);
+    color: $color-dark;
+    font-weight: $font-weight-bold;
+  }
+}
+
+/* Terminal */
+.terminalContainer {
+  position: relative;
+}
+
+.gradientBorder {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 2px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(90deg, $color-primary, $color-secondary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+.terminal {
+  background-color: $color-dark;
+  padding: 1.5rem;
+  border-radius: 0.375rem;
+  font-family: $font-mono;
+}
+
+.terminalLine {
+  color: $color-primary;
+  margin-bottom: 0.5rem;
+
+  &::before {
+    content: "> ";
+  }
+}
+
+.terminalResponse {
+  color: $color-light;
+  margin-bottom: 0.5rem;
+
+  &::before {
+    content: "> ";
+  }
+}
+
+.blinkingCursor {
+  color: $color-primary;
+  font-family: $font-mono;
+  animation: blink-caret 0.75s step-end infinite;
+}

@@ -1,6 +1,6 @@
 // src/components/Contact/Contact.jsx
 import React, { useState } from 'react';
-// import './contact.css';
+import styles from "../styles/contact.module.scss"
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -54,60 +54,60 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact-section">
-      <div className="contact-container">
-        <div className="section-header">
-          <h2 className="section-title">
-            <span className="gradient-text mono">GET_IN_TOUCH</span>
+    <section id="contact" className={styles.contactSection}>
+      <div className={styles.contactContainer}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>
+            <span className={`${styles.gradientText} ${styles.mono}`}>GET_IN_TOUCH</span>
           </h2>
-          <div className="section-divider"></div>
-          <p className="section-description">
+          <div className={styles.sectionDivider}></div>
+          <p className={styles.sectionDescription}>
             Have a project in mind or want to discuss potential opportunities?
           </p>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
             <input 
               type="text" 
               name="name"
               placeholder="Your Name" 
-              className="form-input" 
+              className={styles.formInput} 
               value={formData.name}
               onChange={handleChange}
               required 
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input 
               type="email" 
               name="email"
               placeholder="Your Email" 
-              className="form-input" 
+              className={styles.formInput} 
               value={formData.email}
               onChange={handleChange}
               required 
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <textarea 
               name="message"
               placeholder="Your Message" 
-              className="form-input form-textarea" 
+              className={`${styles.formInput} ${styles.formTextarea}`} 
               value={formData.message}
               onChange={handleChange}
               required
             ></textarea>
           </div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className={styles.submitButton}>
             Send Message
           </button>
         </form>
 
         {status === 'success' && (
-          <p className="success-msg">Message sent successfully!</p>
+          <p className={styles.successMsg}>Message sent successfully!</p>
         )}
-        {status === 'fail' && <p className="error-msg">Failed to send message. Try again.</p>}
+        {status === 'fail' && <p className={styles.errorMsg}>Failed to send message. Try again.</p>}
       </div>
     </section>
   );

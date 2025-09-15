@@ -1,0 +1,176 @@
+/* src/components/Projects/Projects.module.scss */
+
+.projectsSection {
+  padding: 5rem 1rem;
+  background-color: $color-black;
+}
+
+.projectsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: 1rem;
+}
+
+.gradientText {
+  background: linear-gradient(to right, $color-primary, $color-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mono {
+  font-family: $font-mono;
+}
+
+.sectionDivider {
+  width: 5rem;
+  height: 0.125rem;
+  background: linear-gradient(to right, $color-primary, $color-secondary);
+  margin: 0 auto;
+}
+
+.sectionDescription {
+  font-size: $font-size-lg;
+  color: $color-light;
+  max-width: 42rem;
+  margin: 1.5rem auto 0;
+  line-height: $line-height-base;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.projectCard {
+  background-color: $color-dark;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid color.scale($color-dark, $lightness: 15%);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.625rem 1.5625rem rgba($color-primary, 0.2);
+    border-color: $color-primary;
+  }
+}
+
+.projectImage {
+  height: 12rem;
+  background: linear-gradient(to bottom right, $color-dark, color.scale($color-dark, $lightness: 15%));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.projectIcon {
+  font-size: 3rem;
+  color: $color-primary;
+  margin-bottom: 1rem;
+}
+
+.projectTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+}
+
+.projectDetails {
+  padding: 1.5rem;
+}
+
+.projectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.projectTag {
+  padding: 0.25rem 0.5rem;
+  background-color: color.scale($color-dark, $lightness: 15%);
+  border-radius: 0.25rem;
+  font-size: $font-size-xs;
+  font-family: $font-mono;
+  color: $color-primary;
+}
+
+.projectDescription {
+  color: $color-light;
+  margin-bottom: 1rem;
+  line-height: $line-height-base;
+}
+
+.projectFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projectLink {
+  color: $color-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-family: $font-mono;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: color.scale($color-primary, $lightness: -10%);
+  }
+}
+
+.projectStats {
+  font-size: $font-size-xs;
+  color: color.scale($color-light, $lightness: -35%);
+  font-family: $font-mono;
+}
+
+.projectsFooter {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.viewAllButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid color.scale($color-dark, $lightness: 20%);
+  color: $color-light;
+  border-radius: 0.375rem;
+  font-weight: $font-weight-medium;
+  font-family: $font-mono;
+  transition: all 0.3s ease;
+  gap: 0.5rem;
+
+  &:hover {
+    color: $color-white;
+    border-color: $color-primary;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .projectsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
