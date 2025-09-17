@@ -1,18 +1,22 @@
 import React from "react";
 import styles from "../styles/hero.module.scss";
 import { smoothScroll } from "../utils/smoothScroll";
-
+import MatrixRain from "../components/MAtrix"; // adjust path if needed
 
 const Hero = () => {
   const handleClick = (e, targetId) => {
     e.preventDefault();
-    smoothScroll(targetId, 80); // 80px offset to account for fixed header if you have one
+    smoothScroll(targetId, 80);
   };
 
   return (
     <section id="hero" className={styles.heroSection}>
-      <div className={styles.heroBackground}></div>
+      {/* Background animation */}
+      <div className={styles.heroBackground}>
+        <MatrixRain />
+      </div>
 
+      {/* Foreground content */}
       <div className={styles.heroContent}>
         <div className={styles.heroBadge}>
           <span className={`${styles.badgeText} mono`}>SYSTEM_DEV v2.0.0</span>
@@ -50,11 +54,16 @@ const Hero = () => {
 
         <div className={styles.heroScroll}>
           <div className={`${styles.scrollCircle} ${styles.floating}`}>
-            <a href="#about" className={styles.scrollLink} aria-label="Scroll to about"
-            onClick={(e)=> handleClick(e,'about')}
+            <a
+              href="#about"
+              className={styles.scrollLink}
+              aria-label="Scroll to about"
+              onClick={(e) => handleClick(e, "about")}
             >
-              {/* keep FontAwesome classes, add module animation class */}
-              <i className={`fas fa-chevron-down ${styles.animateBounce}`} aria-hidden="true"></i>
+              <i
+                className={`fas fa-chevron-down ${styles.animateBounce}`}
+                aria-hidden="true"
+              ></i>
             </a>
           </div>
         </div>
