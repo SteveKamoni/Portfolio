@@ -1,23 +1,32 @@
+// server.js
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
 const app = express();
+
+// Middleware
 app.use(express.json());
+
+// CORS: allow local dev, and production domain later
 app.use(
   cors({
-    origin: "https://<your-vercel-site>.vercel.app", // <-- I will replace this exact domain later
+    origin: [
+      "http://localhost:5173", // Vite dev server
+      "http://localhost:3000", // CRA dev server
+      process.env.CLIENT_URL, // production frontend (e.g., https://your-vercel-site.vercel.app)
+    ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
 );
 
-// API routes
+// Routes
 const formRoutes = require("./routes/formRoutes");
 app.use("/api/form", formRoutes);
 
-// Serve frontend
+// Serve frontend in production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
   app.get("/*", (req, res) => {
@@ -25,5 +34,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
