@@ -4,9 +4,9 @@
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix client\" \"npm start --prefix server\"",
     "build": "cd client && npm install && npm run build",
-    "start": "node server/server.js"
+    "start": "npm run dev"
   },
   "devDependencies": {
-    "concurrently": "^9.2.0"
+    "concurrently": "^9.2.1"
   }
 }
