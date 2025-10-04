@@ -9,11 +9,15 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState(null); // null | 'success' | 'fail' | 'sending'
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Auto-clear success/fail message after 3s
   useEffect(() => {
     if (status === "success" || status === "fail") {
-      const timer = setTimeout(() => setStatus(null), 3000);
+      const timer = setTimeout(() => {
+        setStatus(null);
+        setErrorMessage("");
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [status]);
@@ -28,25 +32,37 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
+
+    const apiUrl = import.meta.env.VITE_API_URL || "https://portfolio-backend-oey8.onrender.com";
+    
+    console.log("Submitting to:", `${apiUrl}/api/form`);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/form`, {
+      const res = await fetch(`${apiUrl}/api/form`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
+      console.log("Response status:", res.status);
+
       const data = await res.json();
+      console.log("Response data:", data);
 
       if (res.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
         console.error("Backend error:", data.error);
+        setErrorMessage(data.error || "Server error occurred");
         setStatus("fail");
       }
     } catch (err) {
       console.error("Network error:", err);
+      setErrorMessage(`Network error: ${err.message}`);
       setStatus("fail");
     }
   };
@@ -112,7 +128,9 @@ const Contact = () => {
           <p className={styles.successMsg}>✅ Message sent successfully!</p>
         )}
         {status === "fail" && (
-          <p className={styles.errorMsg}>❌ Failed to send message. Try again.</p>
+          <p className={styles.errorMsg}>
+            ❌ Failed to send message. {errorMessage && <span>{errorMessage}</span>}
+          </p>
         )}
       </div>
     </section>
