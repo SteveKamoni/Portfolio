@@ -15,7 +15,7 @@ app.use(
     origin: [
       // "http://localhost:5173", // Vite dev server
       // "http://localhost:3000", // CRA dev server
-      "https://buildsbysteve.vercel.app/",
+      "https://buildsbysteve.vercel.app",
       // Production frontend
     ].filter(Boolean), // removes undefined if CLIENT_URL is not set
     methods: ["GET", "POST"],
