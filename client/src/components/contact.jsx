@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/contact.module.scss";
+import { submitForm } from "../utils/api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -34,35 +35,17 @@ const Contact = () => {
     setStatus("sending");
     setErrorMessage("");
 
-    const apiUrl = import.meta.env.VITE_API_URL || "https://portfoliobackend-fiuc.onrender.com";
-    
-    console.log("Submitting to:", `${apiUrl}/api/form`);
+    console.log("Submitting form data:", formData);
 
     try {
-      const res = await fetch(`${apiUrl}/api/form`, {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      console.log("Response status:", res.status);
-
-      const data = await res.json();
+      const data = await submitForm(formData);
       console.log("Response data:", data);
 
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        console.error("Backend error:", data.error);
-        setErrorMessage(data.error || "Server error occurred");
-        setStatus("fail");
-      }
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error("Network error:", err);
-      setErrorMessage(`Network error: ${err.message}`);
+      console.error("Error:", err);
+      setErrorMessage(err.message);
       setStatus("fail");
     }
   };
