@@ -5,59 +5,64 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 
-// CORS: allow local dev, and production domain later
+// VERY PERMISSIVE CORS FOR DEBUGGING - We'll restrict it later
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // Vite dev server
-      "http://localhost:3000", // CRA dev server
-      "https://buildsbysteve.vercel.app", // Production frontend
-    ].filter(Boolean),
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Added OPTIONS
-    allowedHeaders: ["Content-Type", "Authorization"], // Added Authorization just in case
-    credentials: true, // If you're using cookies/auth
+    origin: true, // Allow all origins temporarily
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Handle preflight requests explicitly
+// Handle preflight
 app.options("*", cors());
-
-// Logging middleware for debugging
-app.use((req, res, next) => {
-  console.log(`\n[${new Date().toISOString()}]`);
-  console.log(`Method: ${req.method}`);
-  console.log(`Path: ${req.path}`);
-  console.log(`Origin: ${req.headers.origin}`);
-  console.log(`Headers:`, req.headers);
-  next();
-});
 
 // Middleware
 app.use(express.json());
 
-// Add a test route to verify CORS is working
+// Logging middleware
+app.use((req, res, next) => {
+  console.log(`\n[${new Date().toISOString()}]`);
+  console.log(`${req.method} ${req.path}`);
+  console.log(`Origin: ${req.headers.origin}`);
+  next();
+});
+
+// Test route
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", message: "CORS is configured" });
+  res.json({
+    status: "ok",
+    message: "Server is running",
+    timestamp: new Date().toISOString(),
+    cors: "enabled",
+  });
 });
 
 // Routes
 const formRoutes = require("./routes/formRoutes");
 app.use("/api/form", formRoutes);
 
-// Serve frontend in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
-  app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
-  });
-}
+// Frontend is served separately on Vercel, so we don't need this
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../client/dist")));
+//   app.get("/*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+//   });
+// }
 
-// Error handling middleware
+// Error handling
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: "Something went wrong!" });
+  console.error("ERROR:", err);
+  res.status(500).json({ error: err.message });
 });
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`\n========================================`);
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📝 Environment: ${process.env.NODE_ENV || "development"}`);
+  console.log(`🌐 CORS: ENABLED (permissive mode)`);
+  console.log(`========================================\n`);
+});
