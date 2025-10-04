@@ -4,11 +4,6 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-const app = express();
-
-// Middleware
-app.use(express.json());
-
 // CORS: allow local dev, and production domain later
 app.use(
   cors({
@@ -22,6 +17,11 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
+
+const app = express();
+
+// Middleware
+app.use(express.json());
 
 // Routes
 const formRoutes = require("./routes/formRoutes");
