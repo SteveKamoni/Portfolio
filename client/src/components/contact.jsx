@@ -34,7 +34,7 @@ const Contact = () => {
     setStatus("sending");
     setErrorMessage("");
 
-    const apiUrl = import.meta.env.VITE_API_URL || "https://portfolio-backend-oey8.onrender.com";
+    const apiUrl = import.meta.env.VITE_API_URL || "https://portfoliobackend-fiuc.onrender.com";
     
     console.log("Submitting to:", `${apiUrl}/api/form`);
 
